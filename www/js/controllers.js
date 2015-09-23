@@ -90,5 +90,7 @@ angular.module('gamersRoom.controllers', [])
   $scope.chat = Chats.get($stateParams.chatId);
 })
 
-.controller('RoomsCtrl', function($scope) {
+.controller('RoomsCtrl', function ($scope, $state) {
+    console.log( 'rooms controller loaded..');
+    $scope.rooms = [ {'icon': 'ion-ionic','name': 'Dota2' },{'icon': 'ion-ionic','name': 'Dota1' } ];
 });
