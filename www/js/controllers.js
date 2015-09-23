@@ -41,6 +41,34 @@ angular.module('gamersRoom.controllers', [])
     }
   }
 
+  $scope.signIn = function ( user ) {
+    if( user && user.email && user.password ) {
+      $ionicLoading.show( {
+        template: 'Logging in...'
+      });
+      auth.$authWithPassword({
+        email: user.email,
+        password:user.password
+      }).then( function( data ) {
+        ref.child( 'users' ).child(data.uid).once( 'value', function (snapshot) {
+          var val = snapshot.val();
+
+          $scope.$apply( function () {
+            $rootScope.username = val;
+          });
+        });
+        $ionicLoading.hide();
+        console.log( 'were in' );
+        $state.go( 'tab.rooms' );
+      }).catch( function( error ) {
+        alert( 'Auth failed!');
+        $ionicLoading.hide();
+      })
+    } else {
+      alert( 'Enter email and password.')
+    }
+  }
+
 })
 
 .controller('ChatsCtrl', function($scope, Chats) {
@@ -62,8 +90,5 @@ angular.module('gamersRoom.controllers', [])
   $scope.chat = Chats.get($stateParams.chatId);
 })
 
-.controller('AccountCtrl', function($scope) {
-  $scope.settings = {
-    enableFriends: true
-  };
+.controller('RoomsCtrl', function($scope) {
 });

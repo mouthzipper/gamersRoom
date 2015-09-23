@@ -22,6 +22,7 @@ angular.module('gamersRoom', ['ionic', 'gamersRoom.controllers', 'gamersRoom.ser
       StatusBar.styleLightContent();
     }
     $rootScope.firebaseUrl = firebaseUrl;
+    $rootScope.username = '404';
   });
 })
 
@@ -48,15 +49,15 @@ angular.module('gamersRoom', ['ionic', 'gamersRoom.controllers', 'gamersRoom.ser
 
   // Each tab has its own nav history stack:
 
-  // .state('tab.dash', {
-  //   url: '/dash',
-  //   views: {
-  //     'tab-dash': {
-  //       templateUrl: 'templates/tab-dash.html',
-  //       controller: 'DashCtrl'
-  //     }
-  //   }
-  // })
+  .state('tab.rooms', {
+    url: '/rooms',
+    views: {
+      'tab-rooms': {
+        templateUrl: 'templates/tab-rooms.html',
+        controller: 'RoomsCtrl'
+      }
+    }
+  })
 
   // .state('tab.chats', {
   //     url: '/chats',
