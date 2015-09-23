@@ -5,9 +5,10 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
+var firebaseUrl = "https://gamersroom.firebaseio.com";
 angular.module('gamersRoom', ['ionic', 'gamersRoom.controllers', 'gamersRoom.services', 'firebase'])
 
-.run(function($ionicPlatform) {
+.run(function($ionicPlatform, $rootScope) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -20,6 +21,7 @@ angular.module('gamersRoom', ['ionic', 'gamersRoom.controllers', 'gamersRoom.ser
       // org.apache.cordova.statusbar required
       StatusBar.styleLightContent();
     }
+    $rootScope.firebaseUrl = firebaseUrl;
   });
 })
 
