@@ -1,6 +1,9 @@
-angular.module('starter.controllers', [])
+angular.module('gamersRoom.controllers', [])
 
-.controller('DashCtrl', function($scope) {})
+.controller('LoginCtrl', function($scope) {
+  console.log( 'Login controller loaded..' );
+
+})
 
 .controller('ChatsCtrl', function($scope, Chats) {
   // With the new view caching in Ionic, Controllers are only called
