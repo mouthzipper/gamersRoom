@@ -1,7 +1,16 @@
 angular.module('gamersRoom.controllers', [])
 
-.controller('LoginCtrl', function($scope) {
+.controller('LoginCtrl', function($scope, $ionicModal, $state, $firebaseAuth, $ionicLoading, $rootScope ) {
   console.log( 'Login controller loaded..' );
+
+  var ref = new Firebase( $scope.firebaseUrl );
+  var auth = $firebaseAuth( ref );
+
+  $ionicModal.fromTemplateUrl( 'templates/signup.html', {
+    scope : $scope
+  }).then( function ( modal ) {
+    $scope.modal = modal;
+  });
 
 })
 
